@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+	<meta content="telephone=no" name="format-detection">
+	<meta id="viewport" name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+
+	<link rel="icon" href="" type="image/x-icon" />
+	<link rel="shortcut icon" href="" type="image/x-icon" />
+	<title>
+		宝宝胎动
+	</title>
+	
+	<link rel="stylesheet"  href="css/normalize.css">
+	<link rel="stylesheet"  href="css/animate.css">
+	<link rel="stylesheet"  href="lib/fontAwesome/css/font-awesome.min.css">
+	<link rel="stylesheet"  href="lib/cain/cain.css">
+	<link rel="stylesheet"  href="css/rock.css">
+
+</head>
+<body >
+<div id="mainContainer" class="menuView" >
+	</div>
+	<script src="lib/jquery/jquery-1.10.2.min.js"></script>
+	<script src="lib/jq-plusin/jquery.pjax.js"></script>
+	<script src="lib/artTemplate/template.js"></script>
+	<script src="lib/cain/cain.base.js"></script>
+	
+	<script src="lib/iscroll/iscroll.js"></script>
+
+
+	<script src="js/db.js"></script>
+	<script src="lib/require/require.js"></script>
+	<script>
+		jQuery(document).ready(function() {
+			$('#mainContainer').css({'min-height':document.body.scrollHeight});
+			$.pjax({
+				defaultLoad: Cain.getParam('paHref') || 'menu',
+				loadStart:function(){
+					Cain.closeDialog();
+					Cain.closeVPage();
+					Cain.destroyActionSheet();
+				},
+				loadError:function(){
+					  Cain.showAlertDialog({
+				          content:'你访问的页面不存在，请重试，或联系管理员！',
+				          centerBtnContent:'知道了',
+				          isTouchNoClose:true,
+				        });
+				}
+			});
+		});
+		$.fn.extend({
+		    animateCss: function (animationName,successFun) {
+		        var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+		        this.addClass('animated ' + animationName).one(animationEnd, function() {
+		        	if(successFun){
+		        		successFun();
+		        	}
+		            $(this).removeClass('animated ' + animationName);
+		        });
+		    }
+		});
+	</script>
+</body>
+</html>
