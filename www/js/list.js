@@ -153,6 +153,7 @@ var List = {
   	 var all=DB.getAll();
       List.count=0;
   	 if(!Cain.isNullOrEmpty(all)){
+  	 	all.reverse();
   	 	$('.recordList').html(template('recordList_template',{list:all}));
   	 	List.myScroll.refresh();
 		$("#count").html(List.count);
