@@ -75,12 +75,19 @@ var List = {
   	*
   	*/
   initTemplate:function () {
-
+  	var thisDate=new Date();
+  	thisDate.setHours(0)
+  	thisDate.setMinutes(0);
+  	thisDate.setSeconds(0);
+  	var time=thisDate.getTime();
   	 template.helper('contentFormat', function (n) {
   	 	var content=n.content;
   	 	if(n.type=="rock"){
   	 		content='毛豆Rock了下';
-  	 		List.count++;
+  	 		if(n.date >= time){
+  	 			List.count++;
+  	 		}
+  	 		
   	 	}
   	 	return content;
     });
@@ -148,7 +155,7 @@ var List = {
   	 if(!Cain.isNullOrEmpty(all)){
   	 	$('.recordList').html(template('recordList_template',{list:all}));
   	 	List.myScroll.refresh();
-		$("#count").html(List.count+'次');
+		$("#count").html(List.count);
   	 	
   	 }
   	 

@@ -76,8 +76,9 @@ p {
     color: #fdfdfd;
     font-weight: bold;
     letter-spacing: 4px;
+    
 }
-.circle span:first-letter {
+.circle span font {
     font-size: 36px;
 }
 .recordList {
